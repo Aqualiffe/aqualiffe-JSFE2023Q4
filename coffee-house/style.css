@@ -34,8 +34,6 @@ h1 {
 
 h2 {
     font-size: 60px;
-    font-style: normal;
-    font-weight: 600;
     line-height: 125%;
 }
 
@@ -255,18 +253,98 @@ main {
 
 .mobile-app {
     display: flex;
+    gap: 100px;
 
 }
 .app-left {
     display: flex;
     flex-direction: column;
-
+    justify-content: center;
+    gap: 40px;
 }
+
+.app-left img {
+    width: 200px;
+    align-items: center;
+    gap: 8px;
+}
+
 .app-description {
 }
-.app-right {
+
+.mobile-store {
+    display: flex;
+    gap: 20px;
 }
-.left {
+
+.app-right img{
+    width: 630px;
+    height: 630px;
 }
-.right {
+footer {
+    display: flex;
+    justify-content: flex-start;
+    padding: 100px;
+    align-items: stretch;
+    gap: 100px;
+    border-radius: 40px;
+    background: #665F55;
+    margin-top: 97px;
+    height: 450px;
+}
+
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50%;
+}
+
+.footer-left h2 {
+    color: #E1D4C9;
+}
+
+.social {
+    display: flex;
+    gap: 12px;
+}
+.social img {
+    display: flex;
+    width: 60px;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+    width: 50%;
+}
+
+h3{
+    color: #E1D4C9;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 125%;
+}
+
+.contacts-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    list-style-type: none;
+    gap: 16px;
+}
+
+.contacts-info a, .contacts-info li{
+    color: #E1D4C9;
+}
+.contacts-info img {
+    width: 20px;
+    height: 20px;
+    margin-right: 4px;
 }
