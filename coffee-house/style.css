@@ -157,8 +157,24 @@ main {
     width: 100%;
 }
 
-.carousel-left, .carousel-right {
+.carousel-btn {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    border: 1px solid #665F55;
+    border-radius: 100px;
     cursor: pointer;
+    transition: all .5s;
+}
+
+.carousel-btn:hover {
+    background: #665F55;
+}
+.carousel-btn:hover #Vector {
+    stroke: #E1D4C9;
 }
 
 .favorite {
@@ -275,6 +291,33 @@ main {
 .mobile-store {
     display: flex;
     gap: 20px;
+
+}
+
+.app-store {
+    display: block;
+    background: url(./assets/img/button-app-store.svg);
+    width: 200px;
+    height: 64px;
+    cursor: pointer;
+    transition: all 1s;
+}
+
+.google-play {
+    display: block;
+    background: url(./assets/img/button-google-play.svg);
+    width: 200px;
+    height: 64px;
+    cursor: pointer;
+    transition: all 1s;
+}
+
+.app-store:hover {
+    background: url(./assets/img/btn-app-hover.svg);
+}
+
+.google-play:hover {
+    background: url(./assets/img/btn-google-hover.svg);
 }
 
 .app-right img{
@@ -308,12 +351,17 @@ footer {
     display: flex;
     gap: 12px;
 }
-.social img {
-    display: flex;
-    width: 60px;
-    height: 60px;
-    justify-content: center;
-    align-items: center;
+
+.social-btn {
+    border: 1px solid #C1B6AD;
+}
+
+.social-btn:hover {
+    background: #E1D4C9;
+}
+
+.social-btn:hover #socials {
+    stroke: #403F3D;
 }
 
 .footer-right {
@@ -347,4 +395,36 @@ h3{
     width: 20px;
     height: 20px;
     margin-right: 4px;
+}
+
+.underlinе {
+    display: inline-block;
+    line-height: 1;
+    text-decoration:none;
+    cursor: pointer;
+    position:relative;
+    border: none;
+}
+
+.underlinе:after {
+    margin-top: 4px;
+    background-color: #403F3D;;
+    display: block;
+    content: "";
+    height: 2px;
+    width: 0%;
+    opacity: 0;
+    left:50%;
+    position:absolute;
+    transition: all .5s ease-in-out;
+    transform:translateX(-50%);
+}
+
+.underlinе:hover:after {
+    opacity: 1;
+    width: 100%;
+}
+
+.footer-under:after {
+    background-color: #E1D4C9;
 }
