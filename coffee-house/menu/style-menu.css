@@ -16,7 +16,7 @@
 }
 
 .underlinе-menu:after {
-    margin-top: 4px;
+    margin-top: 6px;
     background-color: #403F3D;;
     display: block;
     content: "";
@@ -27,6 +27,14 @@
 #title-menu {
     color: #403F3D;
     font-size: 60px;
+    line-height: 125%;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
 }
 
 .offer {
@@ -104,11 +112,13 @@
 }
 
 .menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     width: 310px;
+    height: 506px;
     border: 1px solid #C1B6AD;
     border-radius: 40px;
-    height: 506px;
-    gap: 0;
     overflow: hidden;
 }
 
@@ -128,34 +138,39 @@
 }
 
 .item-img img:hover {
-    transform: scale(0.9);
+    transform: scale(0.91);
+}
+
+.item-info {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    width: 270px;
+    height: 126px;
+    gap: 12px;
+    flex: 1;
 }
 
 .item-title {
-    margin: 20px 20px 12px 20px;
     font-size: 24px;
     font-style: normal;
     font-weight: 600;
     line-height: 125%;
-    color: #403F3D;
-    align-self: stretch;
 }
 
 .item-description {
-    margin: 0 20px 12px 20px;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 150%;
-    color: #403F3D;
-    align-self: stretch;
 }
 
 .item-price {
-    margin: 0 20px 20px 20px;
+    display: block;
     font-size: 24px;
     font-style: normal;
     font-weight: 600;
     line-height: 125%;
-    align-self: stretch;
+    margin: 0 0 20px 20px;
+
 }
