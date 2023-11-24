@@ -174,7 +174,7 @@ main {
 .carousel-btn:hover {
     background: #665F55;
 }
-.carousel-btn:hover #Vector {
+.carousel-btn:hover .Vector {
     stroke: #E1D4C9;
 }
 
@@ -361,7 +361,7 @@ footer {
     background: #E1D4C9;
 }
 
-.social-btn:hover #socials {
+.social-btn:hover .socials {
     stroke: #403F3D;
 }
 

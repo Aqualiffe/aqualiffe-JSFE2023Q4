@@ -81,17 +81,20 @@
     line-height: 150%;
 }
 
-.btn-menu[disabled], .btn-menu:hover {
-    background-color: #665F55;
-    border: 1px solid #665F55;
+.btn-menu[disabled] {
     cursor: default;
 }
 
-.btn-img[disabled] {
+.btn-menu[disabled], .btn-menu:hover {
+    background-color: #665F55;
+    border: 1px solid #665F55;
+}
+
+.btn-img.off {
     background-color: #E1D4C9;
 }
 
-.name-category[disabled] {
+.name-category.off {
     color: #E1D4C9;
 }
 
