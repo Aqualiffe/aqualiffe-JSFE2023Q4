@@ -82,11 +82,12 @@ header {
 }
 .link-menu {
     display: flex;
-    gap: 8px;
 }
 .link-menu img {
     width: 20px;
     height: 20px;
+    margin-left: 8px;
+    vertical-align: bottom;
 }
 
 main {
