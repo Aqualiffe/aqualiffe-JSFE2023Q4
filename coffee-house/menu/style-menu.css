@@ -106,7 +106,7 @@
     color: #E1D4C9;
 }
 
-.menu-items-coffee {
+.menu {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -140,7 +140,7 @@
     transition: all .3s;
 }
 
-.item-img img:hover {
+.menu-item:hover img {
     transform: scale(0.91);
 }
 
