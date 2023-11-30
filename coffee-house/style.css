@@ -168,7 +168,11 @@ main {
     border: 1px solid #665F55;
     border-radius: 100px;
     cursor: pointer;
-    transition: all .5s;
+    transition: all .9s;
+}
+
+.Vector {
+    transition: all .9s;
 }
 
 .carousel-btn:hover {
@@ -292,34 +296,49 @@ main {
 .mobile-store {
     display: flex;
     gap: 20px;
-
 }
 
-.app-store {
-    display: block;
-    background: url(./assets/img/button-app-store.svg);
+.app-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     width: 200px;
     height: 64px;
+    border: 1px solid #665f55;
+    border-radius: 100px;
     cursor: pointer;
     transition: all 1s;
+    padding: 12px 20px;
 }
 
-.google-play {
-    display: block;
-    background: url(./assets/img/button-google-play.svg);
-    width: 200px;
-    height: 64px;
-    cursor: pointer;
-    transition: all 1s;
+.app-btn:hover {
+    background-color: #665f55;
 }
 
-.app-store:hover {
-    background: url(./assets/img/btn-app-hover.svg);
+.mobile_description {
+    display: flex;
+    flex-direction: column;
 }
 
-.google-play:hover {
-    background: url(./assets/img/btn-google-hover.svg);
+.app-btn:hover .mobile-btn {
+    color: #c1b6ad;
+  }
+
+.little {
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 140%;
 }
+
+.name {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 150%
+}
+
+.app-btn:hover > svg path {
+    fill: #c1b6ad;
+  }
 
 .app-right img{
     width: 630px;
@@ -355,6 +374,7 @@ footer {
 
 .social-btn {
     border: 1px solid #C1B6AD;
+
 }
 
 .social-btn:hover {
