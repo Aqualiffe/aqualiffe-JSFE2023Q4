@@ -149,6 +149,7 @@ main {
     justify-content: center;
     align-items: center;
     gap: 40px;
+    text-align: center;
 }
 .carousel-favorites {
     display: flex;
@@ -242,7 +243,7 @@ main {
     grid-template: 430px 120px 430px/repeat(2, 1fr);
     gap: 40px;
 }
-.about-img div {
+.about-photo {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -353,7 +354,7 @@ footer {
     border-radius: 40px;
     background: #665F55;
     margin-top: 97px;
-    height: 450px;
+    height: auto;
 }
 
 .footer-left {
@@ -361,6 +362,7 @@ footer {
     flex-direction: column;
     justify-content: space-between;
     width: 50%;
+    gap: 40px;
 }
 
 .footer-left h2 {
@@ -448,4 +450,45 @@ h3{
 
 .footer-under:after {
     background-color: #E1D4C9;
+}
+
+@media (max-width: 769px) {
+    .enjoy {
+        padding: 100px 60px;
+    }
+    .enjoy-btn {
+        cursor: none;
+    }
+    #menu-cup {
+        width: 20px;
+        height: 20px;
+        opacity: 1;
+    }
+
+    .about-img {
+        display: flex;
+        flex-direction: column;
+    }
+    .about-2, .about-3 {
+        display: none;
+    }
+    .about-photo {
+        max-height: 590px;
+    }
+
+    .mobile-app {
+        flex-direction: column;
+    }
+    .app-right {
+        margin: 0 29px;
+    }
+
+    footer {
+        flex-direction: column;
+        height: auto;
+        padding: 100px 60px;
+    }
+    .footer-left, .footer-right {
+        width: 100%;
+    }
 }
