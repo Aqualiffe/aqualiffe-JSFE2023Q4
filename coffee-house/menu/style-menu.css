@@ -1,5 +1,9 @@
+.logo {
+    display: block;
+}
 .link-disabled {
     font-weight: 600;
+    height: 24px;
 }
 
 .link-disabled img {
@@ -10,13 +14,12 @@
 .underlinе-menu {
     display: inline-block;
     line-height: 1;
-    text-decoration:none;
     position:relative;
     border: none;
 }
 
 .underlinе-menu:after {
-    margin-top: 6px;
+    margin-top: 4px;
     background-color: #403F3D;;
     display: block;
     content: "";
@@ -61,7 +64,7 @@
     background-color: #E1D4C9 ;
     border: 1px solid #C1B6AD;
     cursor: pointer;
-    transition: all .5s;
+    transition: all .7s;
 }
 
 .btn-img {
@@ -138,7 +141,7 @@
 
 .item-img img {
     display: block;
-    transition: all .3s;
+    transition: all .7s;
 }
 
 .menu-item:hover img {

@@ -7,6 +7,10 @@
     box-sizing: border-box;
 }
 
+body::-webkit-scrollbar {
+    width: 0;
+}
+
 body {
     background-color: #E1D4C9;
     font-size: 16px;
@@ -25,6 +29,7 @@ h1 {
      font-size: 72px;
     color: #E1D4C9;
     line-height: 105%;
+    transition: all .5s;
 }
 
 .text-accent {
@@ -77,11 +82,41 @@ header {
     gap: 40px;
 }
 
-.burger-menu {
+.header__burger-btn {
     display: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    gap: 8px;
+    padding: 0;
+    width: 44px;
+    height: 44px;
+    border: 1px solid #665F55;
+    border-radius: 100px;
+    background-color: #E1D4C9;
+}
+
+.header__burger-btn span {
+    display: block;
+    position: absolute;
+    width: 16px;
+    height: 2px;
+    background-color: #403F3D;
+    /* transition: background-color 0.3s, opacity .5s, transform .5s;
+    will-change: transform; */
+}
+
+.header__burger-btn span:nth-child(1) {
+    transform: translateY(-4px);
+}
+
+.header__burger-btn span:nth-child(2) {
+    transform: translateY(4px);
 }
 .link-menu {
     display: flex;
+    height: 24px;
 }
 .link-menu img {
     width: 20px;
@@ -136,13 +171,6 @@ main {
     opacity: 0;
 }
 
-.enjoy-btn:hover #menu-cup{
-    width: 20px;
-    height: 20px;
-    opacity: 1;
-    transition: all .5s;
-}
-
 .favorites {
     display: flex;
     flex-direction: column;
@@ -174,13 +202,6 @@ main {
 
 .Vector {
     transition: all .9s;
-}
-
-.carousel-btn:hover {
-    background: #665F55;
-}
-.carousel-btn:hover .Vector {
-    stroke: #E1D4C9;
 }
 
 .favorite {
@@ -242,6 +263,7 @@ main {
     display: grid;
     grid-template: 430px 120px 430px/repeat(2, 1fr);
     gap: 40px;
+    transition: all .5s;
 }
 .about-photo {
     display: flex;
@@ -269,14 +291,10 @@ main {
     transition: all .3s;
 }
 
-.about-img img:hover {
-    transform: scale(0.9);
-}
-
 .mobile-app {
     display: flex;
     gap: 100px;
-
+    transition: all .5s;
 }
 .app-left {
     display: flex;
@@ -312,18 +330,10 @@ main {
     padding: 12px 20px;
 }
 
-.app-btn:hover {
-    background-color: #665f55;
-}
-
 .mobile_description {
     display: flex;
     flex-direction: column;
 }
-
-.app-btn:hover .mobile-btn {
-    color: #c1b6ad;
-  }
 
 .little {
     font-size: 10px;
@@ -336,10 +346,6 @@ main {
     font-weight: 600;
     line-height: 150%
 }
-
-.app-btn:hover > svg path {
-    fill: #c1b6ad;
-  }
 
 .app-right img{
     width: 630px;
@@ -379,14 +385,6 @@ footer {
 
 }
 
-.social-btn:hover {
-    background: #E1D4C9;
-}
-
-.social-btn:hover .socials {
-    stroke: #403F3D;
-}
-
 .footer-right {
     display: flex;
     flex-direction: column;
@@ -409,6 +407,7 @@ h3{
     justify-content: center;
     list-style-type: none;
     gap: 16px;
+
 }
 
 .contacts-info a, .contacts-info li{
@@ -423,7 +422,6 @@ h3{
 .underlinе {
     display: inline-block;
     line-height: 1;
-    text-decoration:none;
     cursor: pointer;
     position:relative;
     border: none;
@@ -443,16 +441,111 @@ h3{
     transform:translateX(-50%);
 }
 
-.underlinе:hover:after {
-    opacity: 1;
-    width: 100%;
-}
-
 .footer-under:after {
     background-color: #E1D4C9;
 }
 
+@media (hover:hover) {
+    .enjoy-btn:hover #menu-cup{
+        width: 20px;
+        height: 20px;
+        opacity: 1;
+        transition: all .5s;
+    }
+
+    .carousel-btn:hover {
+        background: #665F55;
+    }
+    .carousel-btn:hover .Vector {
+        stroke: #E1D4C9;
+    }
+
+    .about-img img:hover {
+        transform: scale(0.9);
+    }
+
+    .app-btn:hover {
+        background-color: #665f55;
+    }
+
+    .app-btn:hover .mobile-btn {
+        color: #c1b6ad;
+    }
+
+    .app-btn:hover > svg path {
+        fill: #c1b6ad;
+    }
+
+    .social-btn:hover {
+        background: #E1D4C9;
+    }
+
+    .social-btn:hover .socials {
+        stroke: #403F3D;
+    }
+
+    .underlinе:hover:after {
+        opacity: 1;
+        width: 100%;
+    }
+}
+
+@media (max-width: 1360px) {
+    .app-right img {
+        width: 100%;
+        height: 100%;
+    }
+    .mobile-app {
+        gap: 60px;
+    }
+    .app-left {
+        width: 50%;
+    }
+    .about-img {
+        grid-template: 420px 110px 420px/repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 1180px) {
+    .about-img {
+        grid-template: 400px 90px 400px/repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 980px) {
+    .about-img {
+        grid-template: 380px 70px 380px/repeat(2, 1fr);
+        gap: 20px;
+    }
+    .wrapper {
+        max-width: 980px;
+    }
+    .mobile-app {
+        flex-direction: column;
+        gap: 100px;
+    }
+
+    .app-right {
+        margin: 0 auto;
+    }
+    .app-left {
+        width: 100%;
+    }
+    footer {
+        flex-direction: column;
+        height: auto;
+        padding: 100px 60px;
+    }
+    .footer-left, .footer-right {
+        width: 100%;
+    }
+}
+
 @media (max-width: 769px) {
+    .wrapper {
+        max-width: 768px;
+    }
     .enjoy {
         padding: 100px 60px;
     }
@@ -468,6 +561,7 @@ h3{
     .about-img {
         display: flex;
         flex-direction: column;
+        gap: 40px;
     }
     .about-2, .about-3 {
         display: none;
@@ -476,19 +570,75 @@ h3{
         max-height: 590px;
     }
 
-    .mobile-app {
-        flex-direction: column;
+    /* Burger */
+    .header__burger-btn {
+        display: flex;
     }
-    .app-right {
-        margin: 0 29px;
-    }
+    .nav-menu {
+        position: absolute;
+        right: -768px;
+        background-color: #E1D4C9;
+        padding: 20px 40px 60px 40px;
+        width: 768px;
+        height: 1024px;
+        visibility: hidden;
+        transition: transform .5s, visibility .5s;
 
-    footer {
-        flex-direction: column;
-        height: auto;
-        padding: 100px 60px;
     }
-    .footer-left, .footer-right {
+    .menu {
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        height: 370px;
+        width: 118px;
+    }
+}
+
+@media (max-width: 650px) {
+    .wrapper {
+        padding: 20px 16px 40px;
+    }
+    .enjoy {
+        padding: 60px 16px;
+    }
+    .enjoy-content {
         width: 100%;
     }
+    h1 {
+        font-size: 42px;
+        line-height: 115%;
+    }
+    h2 {
+        font-size: 32px;
+    }
+    .carousel-favorites {
+        justify-content: space-around;
+    }
+    .carousel-left, .carousel-right {
+        display: none;
+    }
+    .favorite, .favorite img {
+        width: 348px;
+    }
+    .mobile-app {
+        gap: 40px;
+    }
+    .mobile-store {
+        flex-direction: column;
+    }
+    footer {
+        padding: 60px 16px;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 380px) {
+    .wrapper {
+        max-width: 380px;
+        padding: 20px 16px;
+    }
+
+
 }
