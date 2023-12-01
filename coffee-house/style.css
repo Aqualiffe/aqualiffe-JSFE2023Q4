@@ -549,9 +549,6 @@ h3{
     .enjoy {
         padding: 100px 60px;
     }
-    .enjoy-btn {
-        cursor: none;
-    }
     #menu-cup {
         width: 20px;
         height: 20px;
@@ -583,16 +580,6 @@ h3{
         height: 1024px;
         visibility: hidden;
         transition: transform .5s, visibility .5s;
-
-    }
-    .menu {
-        display: inline-flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 30px;
-        height: 370px;
-        width: 118px;
     }
 }
 
