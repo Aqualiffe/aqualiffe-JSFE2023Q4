@@ -583,6 +583,15 @@ h3{
     }
 }
 
+@media (max-width: 750px) {
+    .carousel-left, .carousel-right {
+        display: none;
+    }
+    .carousel-favorites {
+        justify-content: space-around;
+    }
+}
+
 @media (max-width: 650px) {
     .wrapper {
         padding: 20px 16px 40px;
@@ -599,12 +608,6 @@ h3{
     }
     h2 {
         font-size: 32px;
-    }
-    .carousel-favorites {
-        justify-content: space-around;
-    }
-    .carousel-left, .carousel-right {
-        display: none;
     }
     .favorite, .favorite img {
         width: 348px;
