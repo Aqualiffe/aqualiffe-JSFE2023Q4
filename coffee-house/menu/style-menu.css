@@ -207,10 +207,17 @@
     }
 }
 
-@media (max-width: 769px) {
+@media (max-width: 830px) {
+    #title-menu {
+        font-size: 32px;
+    }
     .offer {
         width: 100%;
     }
+}
+
+@media (max-width: 769px) {
+
     .hidden {
         display: none;
     }
@@ -220,9 +227,6 @@
 }
 
 @media (max-width: 381px) {
-    #title-menu {
-        font-size: 32px;
-    }
     .menu-controls {
         gap: 8px;
     }
