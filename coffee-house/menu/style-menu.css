@@ -139,7 +139,7 @@
 .item-info {
     display: flex;
     flex-direction: column;
-    margin: 20px;
+    margin: 20px 20px 0 20px;
     width: 270px;
     height: 126px;
     gap: 12px;
