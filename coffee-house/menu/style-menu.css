@@ -86,12 +86,9 @@
 }
 
 .btn-menu[disabled] {
-    cursor: default;
-}
-
-.btn-menu[disabled] {
     background-color: #665F55;
     border: 1px solid #665F55;
+    cursor: default;
 }
 
 .btn-img.off {
@@ -103,11 +100,15 @@
 }
 
 .menu {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     gap: 40px;
+}
+
+.select {
+    display: flex;
 }
 
 .menu-item {
@@ -221,7 +222,7 @@
     .hidden {
         display: none;
     }
-    .refresh {
+    .refresh.show {
         display: flex;
     }
     .link-disabled {

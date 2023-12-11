@@ -73,15 +73,15 @@ function prevSlide() {
 
 // });
 
-btnRight.addEventListener("click", function() {
-    nextSlide();
-});
+    btnRight.addEventListener("click", function() {
+        nextSlide();
+    });
 
-
-btnLeft.addEventListener("click", function() {
-    prevSlide();
-});
+    btnLeft.addEventListener("click", function() {
+        prevSlide();
+    });
 
 setInterval(() => {
     nextSlide()
 }, 3500);
+
