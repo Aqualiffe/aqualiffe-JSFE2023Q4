@@ -103,9 +103,12 @@ header {
     width: 16px;
     height: 2px;
     background-color: #403F3D;
-    /* transition: background-color 0.3s, opacity .5s, transform .5s;
-    will-change: transform; */
+
+    transition: background-color 0.3s, opacity .5s, transform .5s;
+    will-change: transform;
 }
+
+/*burger*/
 
 .header__burger-btn span:nth-child(1) {
     transform: translateY(-4px);
@@ -113,7 +116,19 @@ header {
 
 .header__burger-btn span:nth-child(2) {
     transform: translateY(4px);
+
 }
+
+/*X*/
+.main-header.open .header__burger-btn span:nth-child(1) {
+    transform: translateY(0) rotate(45deg);
+
+}
+
+.main-header.open .header__burger-btn span:nth-child(2) {
+    transform: translateY(0) rotate(-45deg);
+}
+
 .link-menu {
     display: flex;
     height: 24px;
@@ -132,9 +147,11 @@ main {
 }
 
 .enjoy {
+    position: relative;
     border-radius: 40px;
     background: center center/ cover url(./assets/img/img-hero.jpg) no-repeat;
     padding: 100px;
+    z-index: 1;
 }
 
 .enjoy-content {
@@ -171,6 +188,19 @@ main {
     opacity: 0;
 }
 
+
+.enjoy-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    border-radius: 40px;
+    z-index: -1;
+}
+
 .favorites {
     display: flex;
     flex-direction: column;
@@ -185,6 +215,36 @@ main {
     align-items: center;
     gap: 40px;
     width: 100%;
+}
+
+.sliders-wraper {
+    max-width: 480px;
+    overflow: hidden;
+    position: relative;
+    touch-action: pan-y;
+    user-select: none;
+}
+
+.sliders {
+    display: flex;
+    justify-content: start;
+    gap: 20px;
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+    transition: transform 0.5s ease-in-out;
+}
+
+.sliders.grab {
+    cursor: grab;
+}
+
+.sliders.grabbing {
+    cursor: grabbing;
+}
+
+.sliders img {
+    pointer-events: none;
 }
 
 .carousel-btn {
@@ -205,12 +265,16 @@ main {
 }
 
 .favorite {
+    display: block;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 480px;
     gap: 16px;
     text-align: center;
+
+    /* visibility: hidden;
+    animation: fade-out 1s; */
 }
 
 .slider-title {
@@ -228,15 +292,13 @@ main {
     line-height: 125%;
 }
 
-.first {
+/* .slider-show {
     display: flex;
-}
-.second {
-    display: none;
-}
-.third {
-    display: none;
-}
+    opacity: 1;
+    visibility: visible;
+    animation: fade-in 2s;
+} */
+
 .slider-controls {
     display: flex;
     text-align: center;
@@ -542,24 +604,12 @@ h3{
     .footer-left, .footer-right {
         width: 100%;
     }
-    .header__burger-btn {
-        display: flex;
-    }
-        /* Burger */
 
-        .nav-menu {
-            position: absolute;
-            top: -768px;
-            background-color: #E1D4C9;
-            padding: 20px 40px 60px 40px;
-            width: 100%;
-            height: 0;
-            visibility: hidden;
-            /* transition: transform .5s, visibility .5s; */
-        }
+
 }
 
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 768px) {
+
     .wrapper {
         max-width: 100%;
     }
@@ -583,6 +633,52 @@ h3{
     .about-photo {
         max-height: 590px;
     }
+
+
+        /* Burger */
+        .header__burger-btn {
+            display: flex;
+        }
+        .nav-menu {
+            flex-direction: column;
+            position: fixed;
+            justify-content: flex-start;
+            top: 100px;
+            left: 100%;
+            background-color: #E1D4C9;
+            padding: 60px 40px;
+            width: 100vw;
+            height: calc(100vh - 100px);
+            gap: 100px;
+            transition: transform .5s, visibility .5s;
+            overflow-y: auto;
+        }
+        .nav-menu.active {
+            transform: translateX(-100%);
+        }
+        .anchor-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 60px;
+            flex: 0;
+        }
+        .anchor-links a {
+            font-size: 32px;
+            line-height: 125%;
+        }
+        .link-menu a{
+            font-size: 32px;
+            line-height: 125%;
+        }
+        .link-menu img {
+            width: 40px;
+            height: 40px;
+            margin-left: 16px;
+        }
+        .stop-scroll {
+            overflow: hidden;
+        }
 
 }
 
@@ -632,5 +728,27 @@ h3{
         padding: 20px 16px;
     }
 
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        visibility: hidden;
+      }
+      to {
+        opacity: 1;
+        visibility: visible;
+      }
+}
+
+@keyframes fade-out {
+    from {
+      opacity: 1;
+      visibility: visible;
+    }
+    to {
+      opacity: 0;
+      visibility: hidden;
+    }
 
 }
