@@ -86,6 +86,8 @@
 }
 
 .btn-menu[disabled] {
+
+
     background-color: #665F55;
     border: 1px solid #665F55;
     cursor: default;
@@ -235,6 +237,7 @@
         margin-left: 16px;
     }
 }
+
 
 @media (max-width: 381px) {
     .menu-controls {
