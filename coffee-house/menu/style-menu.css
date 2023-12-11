@@ -1,5 +1,9 @@
+.logo {
+    display: block;
+}
 .link-disabled {
     font-weight: 600;
+    height: 24px;
 }
 
 .link-disabled img {
@@ -10,13 +14,12 @@
 .underlinе-menu {
     display: inline-block;
     line-height: 1;
-    text-decoration:none;
     position:relative;
     border: none;
 }
 
 .underlinе-menu:after {
-    margin-top: 6px;
+    margin-top: 4px;
     background-color: #403F3D;;
     display: block;
     content: "";
@@ -61,7 +64,7 @@
     background-color: #E1D4C9 ;
     border: 1px solid #C1B6AD;
     cursor: pointer;
-    transition: all .5s;
+    transition: all .7s;
 }
 
 .btn-img {
@@ -86,7 +89,7 @@
     cursor: default;
 }
 
-.btn-menu[disabled], .btn-menu:hover {
+.btn-menu[disabled] {
     background-color: #665F55;
     border: 1px solid #665F55;
 }
@@ -96,14 +99,6 @@
 }
 
 .name-category.off {
-    color: #E1D4C9;
-}
-
-.btn-menu:hover .btn-img {
-    background-color: #E1D4C9;
-}
-
-.btn-menu:hover .name-category {
     color: #E1D4C9;
 }
 
@@ -138,17 +133,13 @@
 
 .item-img img {
     display: block;
-    transition: all .3s;
-}
-
-.menu-item:hover img {
-    transform: scale(0.91);
+    transition: all .7s;
 }
 
 .item-info {
     display: flex;
     flex-direction: column;
-    margin: 20px;
+    margin: 20px 20px 0 20px;
     width: 270px;
     height: 126px;
     gap: 12px;
@@ -176,6 +167,76 @@
     font-weight: 600;
     line-height: 125%;
     margin: 0 0 20px 20px;
-
 }
 
+.refresh {
+    display: none;
+    justify-content: center
+}
+
+.btn-refresh {
+    display: flex;
+    padding: 18px;
+    width: 60px;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    background-color: #E1D4C9 ;
+    border: 1px solid #665F55;
+    cursor: pointer;
+    transition: all .7s;
+}
+
+@media (hover:hover) {
+    .btn-menu:hover {
+        background-color: #665F55;
+        border: 1px solid #665F55;
+    }
+
+    .btn-menu:hover .btn-img {
+        background-color: #E1D4C9;
+    }
+
+    .btn-menu:hover .name-category {
+        color: #E1D4C9;
+    }
+
+    .menu-item:hover img {
+        transform: scale(0.91);
+    }
+}
+
+@media (max-width: 830px) {
+    #title-menu {
+        font-size: 32px;
+    }
+    .offer {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .hidden {
+        display: none;
+    }
+    .refresh {
+        display: flex;
+    }
+    .link-disabled {
+        font-size: 32px;
+        line-height: 125%;
+    }
+    .link-disabled img {
+        width: 40px;
+        height: 40px;
+        margin-left: 16px;
+    }
+}
+
+@media (max-width: 381px) {
+    .menu-controls {
+        gap: 8px;
+    }
+}
