@@ -111,6 +111,9 @@
 
 .select {
     display: flex;
+    opacity: 1;
+    visibility: visible;
+    animation: fade-in 1s;
 }
 
 .menu-item {
@@ -242,5 +245,27 @@
 @media (max-width: 381px) {
     .menu-controls {
         gap: 8px;
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        visibility: hidden;
+      }
+      to {
+        opacity: 1;
+        visibility: visible;
+      }
+}
+
+@keyframes fade-out {
+    from {
+      opacity: 1;
+      visibility: visible;
+    }
+    to {
+      opacity: 0;
+      visibility: hidden;
     }
 }
