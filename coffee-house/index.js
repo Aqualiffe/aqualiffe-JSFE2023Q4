@@ -23,16 +23,27 @@ menuItems.forEach(e => {
 });
 
 /*Slider*/
+window.addEventListener('resize', function () {
+    if (window.innerWidth <= 768) {
+    window.location.reload();
+    }
+});
+
+
 const btnLeft = document.querySelector(".carousel-left");
 const btnRight = document.querySelector(".carousel-right");
-const sliders = document.querySelectorAll(".favorite")
-const slidersBox = document.querySelector(".sliders")
+const sliders = document.querySelectorAll(".favorite");
+const slidersBox = document.querySelector(".sliders");
+const slideWight= document.getElementById("slider-wight");
 let currentIndex = 0;
 let lastIndex = sliders.length - 1;
 let nextIndex = 1;
-const imageWidth = 500;
+// const imageWidth = 500;
 let startX =0;
 let pressed = false;
+const imageWidth = slideWight.scrollWidth + 20;
+
+console.log(imageWidth);
 
 function nextSlide() {
     nextIndex = currentIndex + 1;
