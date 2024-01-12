@@ -6,15 +6,17 @@ let listQA = {
   'Rolling Scopes School': 'School name',
 }
 
-function randomKeys(obj) {
+let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+function randomWord(obj) {
   let keys = Object.keys(obj);
-  return keys[ keys.length * Math.random() << 0];
+  return keys[ Math.floor(keys.length * Math.random())];
 }
 
-let currentKey = randomKeys(listQA);
-let currentQuestion = listQA[currentKey];
+let currentWord = randomWord(listQA);
+let currentQuestion = listQA[currentWord];
 
-console.log(currentKey[2]);
+console.log(currentWord);
 
 /*MAIN*/
 let main = document.createElement('main');
@@ -23,7 +25,7 @@ document.body.prepend(main);
 
 let mainTitle = document.createElement('h1');
 mainTitle.className = 'main__title';
-mainTitle.textContent = 'Hangman';
+mainTitle.textContent = 'Hangman game';
 main.prepend(mainTitle);
 
 let conteiner = document.createElement('div');
@@ -52,8 +54,8 @@ let letter = document.createElement('span');
 letter.className = 'letter';
 startWord ='';
 
-for(let i = 0; i < currentKey.length; i += 1) {
-  if (currentKey[i] !== ' ') {
+for(let i = 0; i < currentWord.length; i += 1) {
+  if (currentWord[i] !== ' ') {
     startWord += '_';
   } else {
     startWord += ' ';
@@ -63,11 +65,20 @@ for(let i = 0; i < currentKey.length; i += 1) {
 letter.textContent = startWord;
 word.appendChild(letter);
 
-console.log(startWord);
+let CountErrorConteiner = document.createElement('h3');
+CountErrorConteiner.className = 'controls__error';
+CountErrorConteiner.innerHTML = 'Incorrect guesses: ' + `<span class = "count-errors">0 / ${currentWord.length}</span>`;
+controls.appendChild(CountErrorConteiner);
 
 
+let keyboard = document.createElement('div')
+keyboard.className = 'keyboard';
 
+for (let i = 0; i < alphabet.length; i += 1) {
+  keyboard.innerHTML += "<span class='key'>" + alphabet[i] + "</span>"
+}
 
+controls.appendChild(keyboard);
 
 
 
