@@ -14,11 +14,12 @@ function randomKeys(obj) {
 let currentKey = randomKeys(listQA);
 let currentQuestion = listQA[currentKey];
 
-console.log(currentQuestion);
+console.log(currentKey[2]);
 
 /*MAIN*/
 let main = document.createElement('main');
-document.body.append(main);
+main.className = 'main';
+document.body.prepend(main);
 
 let mainTitle = document.createElement('h1');
 mainTitle.className = 'main__title';
@@ -43,6 +44,26 @@ hintConteiner.className = 'hint';
 hintConteiner.textContent = 'Hint: ' + currentQuestion;
 controls.appendChild(hintConteiner);
 
+let word = document.createElement('div');
+word.className = 'word';
+controls.appendChild(word);
+
+let letter = document.createElement('span');
+letter.className = 'letter';
+startWord ='';
+
+for(let i = 0; i < currentKey.length; i += 1) {
+  if (currentKey[i] !== ' ') {
+    startWord += '_';
+  } else {
+    startWord += ' ';
+  }
+}
+
+letter.textContent = startWord;
+word.appendChild(letter);
+
+console.log(startWord);
 
 
 
