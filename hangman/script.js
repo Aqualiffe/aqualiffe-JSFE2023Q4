@@ -7,6 +7,7 @@ let listQA = {
 }
 
 let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+let wrongKey = 0;
 
 function randomWord(obj) {
   let keys = Object.keys(obj);
@@ -68,7 +69,7 @@ word.appendChild(letter);
 
 let CountErrorConteiner = document.createElement('h3');
 CountErrorConteiner.className = 'controls__error';
-CountErrorConteiner.innerHTML = 'Incorrect guesses: ' + `<span class = "count-errors">0 / 6</span>`;
+CountErrorConteiner.innerHTML = 'Incorrect guesses: ' + `<span class = "count-errors">${wrongKey} / 6</span>`;
 controls.appendChild(CountErrorConteiner);
 
 
@@ -88,7 +89,11 @@ const initGame = (button, clickedKey) => {
     console.log(clickedKey, 'есть буква');
   } else {
     console.log(clickedKey, 'нет буквы');
+    wrongKey += 1;
   }
+  button.disabled = true;
+  CountErrorConteiner.innerHTML = 'Incorrect guesses: ' + `<span class = "count-errors">${wrongKey} / 6</span>`;
+  console.log (wrongKey);
 }
 
 
@@ -103,25 +108,6 @@ for (let i = 0; i < alphabet.length; i += 1) {
   keyboard.appendChild(button);
   button.addEventListener('click', e => initGame(e.target, alphabet[i]));
 }
-
-
-
-
-
-
-// document.addEventListener('click', insertLetter);
-
-// let insertLetter = function (event) {
-//   if (event.target.contains('key')) {
-
-//   }
-  // if (event.keyCode < 65 || event.keyCode > 90) return;
-
-// };
-
-// document.addEventListener('keydown', insertLetter)
-
-
 
 
 /*FOOTER*/
