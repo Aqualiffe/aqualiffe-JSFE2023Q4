@@ -7,7 +7,9 @@ let listQA = {
 }
 
 let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
 let wrongKey = 0;
+const maxKey = 6;
 
 function randomWord(obj) {
   let keys = Object.keys(obj);
@@ -36,7 +38,14 @@ main.appendChild(conteiner);
 
 let gallows = document.createElement('div');
 gallows.className = 'gallows';
-gallows.innerHTML = '<img src="./assets/gallows.svg" class="basisGallows" alt="gallows">'
+gallows.innerHTML = '<img src="./assets/gallows.svg" class="basisGallows" alt="gallows">';
+// gallows.innerHTML += '<img src="./assets/head.svg" class="headGallows" alt="gallows">';
+// gallows.innerHTML += '<img src="./assets/body.svg" class="bodyGallows" alt="gallows">';
+// gallows.innerHTML += '<img src="./assets/hand-one.svg" class="handOneGallows" alt="gallows">'
+// gallows.innerHTML = '<img src="./assets/gallows.svg" class="basisGallows" alt="gallows">'
+// gallows.innerHTML = '<img src="./assets/gallows.svg" class="basisGallows" alt="gallows">'
+// gallows.innerHTML = '<img src="./assets/gallows.svg" class="basisGallows" alt="gallows">'
+
 conteiner.appendChild(gallows);
 
 let controls = document.createElement('div');
@@ -69,7 +78,7 @@ word.appendChild(letter);
 
 let CountErrorConteiner = document.createElement('h3');
 CountErrorConteiner.className = 'controls__error';
-CountErrorConteiner.innerHTML = 'Incorrect guesses: ' + `<span class = "count-errors">${wrongKey} / 6</span>`;
+CountErrorConteiner.innerHTML = 'Incorrect guesses: ' + `<span class = "count-errors">${wrongKey} / ${maxKey}</span>`;
 controls.appendChild(CountErrorConteiner);
 
 
@@ -79,21 +88,22 @@ const initGame = (button, clickedKey) => {
     for(let i = 0; i < startWord.length; i += 1) {
       if (currentWord[i] === clickedKey){
         startWord[i] = clickedKey;
-    }
+      }
     }
     startWord = startWord.join('');
     letter.textContent = startWord;
     word.appendChild(letter);
     button.disabled = true;
-    console.log(startWord);
     console.log(clickedKey, 'есть буква');
   } else {
     console.log(clickedKey, 'нет буквы');
     wrongKey += 1;
   }
   button.disabled = true;
-  CountErrorConteiner.innerHTML = 'Incorrect guesses: ' + `<span class = "count-errors">${wrongKey} / 6</span>`;
-  console.log (wrongKey);
+  CountErrorConteiner.innerHTML = 'Incorrect guesses: ' + `<span class = "count-errors">${wrongKey} / ${maxKey}</span>`;
+  if (wrongKey === maxKey) {
+
+  }
 }
 
 
@@ -108,7 +118,18 @@ for (let i = 0; i < alphabet.length; i += 1) {
   keyboard.appendChild(button);
   button.addEventListener('click', e => initGame(e.target, alphabet[i]));
 }
-
+let keys = document.querySelectorAll('.key');
+document.body.addEventListener('keydown', e => {
+  if (!alphabet.toUpperCase().includes(e.key)) {
+    console.log('Слово состоит из английских букв');
+  }
+  for (i = 0; i < keys.length; i += 1) {
+    if (keys[i].textContent.includes(e.key.toUpperCase()) && !keys[i].disabled){
+      console.log(keys[i]);
+      initGame(keys[i], e.key.toUpperCase())
+    }
+  }
+});
 
 /*FOOTER*/
 let footer = document.createElement('footer');
