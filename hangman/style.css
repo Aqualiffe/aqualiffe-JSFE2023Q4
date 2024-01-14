@@ -46,6 +46,10 @@ body {
   justify-content: center;
 }
 
+.basisGallows {
+  height: 500px;
+}
+
 .controls {
   display: grid;
   grid-template-rows: 0.3fr 0.7fr 0.3fr 1fr;
@@ -94,13 +98,15 @@ body {
   text-align: center;
 }
 
-.key .open {
+.key:disabled,
+.key[disabled] {
   color: white;
   border: 2px solid gray;
   background-color: gray;
+  cursor: not-allowed;
 }
 
-.key:hover {
+.key:hover:enabled {
   color: white;
   border: 2px solid gray;
   background-color: gray;
@@ -124,13 +130,8 @@ footer img {
   filter: invert(68%) sepia(10%) saturate(357%) hue-rotate(226deg) brightness(92%) contrast(86%);
 }
 
-@media (max-width: 900px) {
-  .basisGallows {
-    height: 400px;
-  }
-}
 
-@media (max-width: 635px) {
+@media (max-width: 765px) {
   .basisGallows {
     height: 400px;
   }
@@ -150,9 +151,6 @@ footer img {
     display: flex;
     flex-direction: column;
     margin: 10px;
-  }
-  .basisGallows {
-    height: 200px;
   }
   .controls {
     display: flex;

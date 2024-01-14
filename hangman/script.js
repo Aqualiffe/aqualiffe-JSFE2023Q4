@@ -15,6 +15,7 @@ function randomWord(obj) {
 
 let currentWord = randomWord(listQA);
 let currentQuestion = listQA[currentWord];
+currentWord = currentWord.toUpperCase();
 
 console.log(currentWord);
 
@@ -67,18 +68,59 @@ word.appendChild(letter);
 
 let CountErrorConteiner = document.createElement('h3');
 CountErrorConteiner.className = 'controls__error';
-CountErrorConteiner.innerHTML = 'Incorrect guesses: ' + `<span class = "count-errors">0 / ${currentWord.length}</span>`;
+CountErrorConteiner.innerHTML = 'Incorrect guesses: ' + `<span class = "count-errors">0 / 6</span>`;
 controls.appendChild(CountErrorConteiner);
+
+
+const initGame = (button, clickedKey) => {
+  if (currentWord.includes(clickedKey)) {
+    startWord = startWord.split('');
+    for(let i = 0; i < startWord.length; i += 1) {
+      if (currentWord[i] === clickedKey){
+        startWord[i] = clickedKey;
+    }
+    }
+    startWord = startWord.join('');
+    letter.textContent = startWord;
+    word.appendChild(letter);
+    button.disabled = true;
+    console.log(startWord);
+    console.log(clickedKey, 'есть буква');
+  } else {
+    console.log(clickedKey, 'нет буквы');
+  }
+}
 
 
 let keyboard = document.createElement('div')
 keyboard.className = 'keyboard';
+controls.appendChild(keyboard);
 
 for (let i = 0; i < alphabet.length; i += 1) {
-  keyboard.innerHTML += "<span class='key'>" + alphabet[i] + "</span>"
+  const button = document.createElement ('button');
+  button.className = 'key';
+  button.innerHTML += alphabet[i];
+  keyboard.appendChild(button);
+  button.addEventListener('click', e => initGame(e.target, alphabet[i]));
 }
 
-controls.appendChild(keyboard);
+
+
+
+
+
+// document.addEventListener('click', insertLetter);
+
+// let insertLetter = function (event) {
+//   if (event.target.contains('key')) {
+
+//   }
+  // if (event.keyCode < 65 || event.keyCode > 90) return;
+
+// };
+
+// document.addEventListener('keydown', insertLetter)
+
 
 
 
