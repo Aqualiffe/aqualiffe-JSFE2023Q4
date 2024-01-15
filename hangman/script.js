@@ -6,6 +6,8 @@ let listQA = {
   'Rolling Scopes School': 'School name',
 }
 
+const arrayOfImages = ['./assets/head.svg', './assets/body.svg', './assets/hand-one.svg', './assets/hand-two.svg', './assets/leg-one.svg', './assets/leg-two.svg',];
+
 let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 let wrongKey = 0;
@@ -21,6 +23,7 @@ let currentQuestion = listQA[currentWord];
 currentWord = currentWord.toUpperCase();
 
 console.log(currentWord);
+
 
 /*MAIN*/
 let main = document.createElement('main');
@@ -38,15 +41,19 @@ main.appendChild(conteiner);
 
 let gallows = document.createElement('div');
 gallows.className = 'gallows';
-gallows.innerHTML = '<img src="./assets/gallows.svg" class="basisGallows" alt="gallows">';
-// gallows.innerHTML += '<img src="./assets/head.svg" class="headGallows" alt="gallows">';
-// gallows.innerHTML += '<img src="./assets/body.svg" class="bodyGallows" alt="gallows">';
-// gallows.innerHTML += '<img src="./assets/hand-one.svg" class="handOneGallows" alt="gallows">'
-// gallows.innerHTML = '<img src="./assets/gallows.svg" class="basisGallows" alt="gallows">'
-// gallows.innerHTML = '<img src="./assets/gallows.svg" class="basisGallows" alt="gallows">'
-// gallows.innerHTML = '<img src="./assets/gallows.svg" class="basisGallows" alt="gallows">'
-
 conteiner.appendChild(gallows);
+let allBody = document.createElement('div');
+allBody.className = `gallows__allBody`;
+gallows.appendChild(allBody);
+
+
+for (let i = 0; i < 6; i += 1) {
+  let images = document.createElement('img');
+  images.src = arrayOfImages[i];
+  images.className = `allBody_img part-${i}`;
+  allBody.appendChild(images);
+}
+
 
 let controls = document.createElement('div');
 controls.className = 'controls';
@@ -83,6 +90,7 @@ controls.appendChild(CountErrorConteiner);
 
 
 const initGame = (button, clickedKey) => {
+  let arrImg = document.querySelectorAll('.allBody_img ');
   if (currentWord.includes(clickedKey)) {
     startWord = startWord.split('');
     for(let i = 0; i < startWord.length; i += 1) {
@@ -98,6 +106,7 @@ const initGame = (button, clickedKey) => {
   } else {
     console.log(clickedKey, 'нет буквы');
     wrongKey += 1;
+    arrImg[wrongKey - 1].classList.add('open');
   }
   button.disabled = true;
   CountErrorConteiner.innerHTML = 'Incorrect guesses: ' + `<span class = "count-errors">${wrongKey} / ${maxKey}</span>`;
