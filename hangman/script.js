@@ -13,6 +13,8 @@ let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 let wrongKey = 0;
 const maxKey = 6;
 let result = ['You won', 'You lost']
+
+
 function randomWord(obj) {
   let keys = Object.keys(obj);
   return keys[ Math.floor(keys.length * Math.random())];
@@ -25,14 +27,6 @@ currentWord = currentWord.toUpperCase();
 console.log(currentWord);
 
 /*MODAL*/
-{/* <div class="modal open">
-<div class="modal-box">
-  <button class="modal__x x-log"></button>
-    <p class="modal-text">You won / You lost</p>
-    <p class="modal-text-word">Word: </p>
-    <button class="btn_reset">Play again</button>
-</div>
-</div> */}
 
 const modal = document.createElement('div');
 const modalBox = document.createElement('div');
@@ -58,11 +52,6 @@ modalBox.prepend(modalTextWord);
 modalBox.prepend(modalText);
 
 
-
-
-
-// const buttonModalClose = document.querySelector('.x-log');
-// const modal = document.querySelector('.modal');
 
 /*MAIN*/
 let main = document.createElement('main');
@@ -180,18 +169,21 @@ document.body.addEventListener('keydown', e => {
 });
 
 
-
 const modalOpen = function() {
   modal.classList.add("open");
 }
 
-const modalClose = function() {
-  modal.classList.remove("open");
-
+const modalClose = function(e) {
+  const clickModal = e.composedPath().includes(modalBox);
+  const clickBtnClose = e.composedPath().includes(buttonModalClose);
+  const clickBtnReset = e.composedPath().includes(btnReset);
+  if (!clickModal || clickBtnClose || clickBtnReset) {
+    modal.classList.remove("open");
+  }
 }
 
 buttonModalClose.addEventListener('click', modalClose);
-
+document.addEventListener('click', modalClose);
 /*FOOTER*/
 let footer = document.createElement('footer');
 let year = document.createElement('p');
@@ -206,3 +198,16 @@ footer.appendChild(linkTRSS);
 footer.appendChild(linkGit);
 document.body.append(footer);
 
+// const resetGame = function() {
+//   wrongKey = 0;
+//   currentWord = randomWord(listQA);
+//   currentQuestion = listQA[currentWord];
+//   currentWord = currentWord.toUpperCase();
+//   hintConteiner.textContent = 'Hint: ' + currentQuestion;
+//   letter.textContent = startWord;
+// }
+
+btnReset.addEventListener('click', function() {
+  resetGame();
+  modalClose;
+});
