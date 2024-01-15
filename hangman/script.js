@@ -183,7 +183,7 @@ const modalClose = function(e) {
 }
 
 buttonModalClose.addEventListener('click', modalClose);
-document.addEventListener('click', modalClose);
+// document.addEventListener('click', modalClose);
 /*FOOTER*/
 let footer = document.createElement('footer');
 let year = document.createElement('p');
@@ -207,7 +207,7 @@ document.body.append(footer);
 //   letter.textContent = startWord;
 // }
 
-btnReset.addEventListener('click', function() {
-  resetGame();
-  modalClose;
-});
+// btnReset.addEventListener('click', function() {
+//   resetGame();
+//   modalClose;
+// });
