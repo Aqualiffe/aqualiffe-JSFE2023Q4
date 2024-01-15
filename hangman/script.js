@@ -12,7 +12,7 @@ let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 let wrongKey = 0;
 const maxKey = 6;
-
+let result = ['You won', 'You lost']
 function randomWord(obj) {
   let keys = Object.keys(obj);
   return keys[ Math.floor(keys.length * Math.random())];
@@ -24,6 +24,45 @@ currentWord = currentWord.toUpperCase();
 
 console.log(currentWord);
 
+/*MODAL*/
+{/* <div class="modal open">
+<div class="modal-box">
+  <button class="modal__x x-log"></button>
+    <p class="modal-text">You won / You lost</p>
+    <p class="modal-text-word">Word: </p>
+    <button class="btn_reset">Play again</button>
+</div>
+</div> */}
+
+const modal = document.createElement('div');
+const modalBox = document.createElement('div');
+const buttonModalClose = document.createElement('button');
+const modalText = document.createElement('p');
+const modalTextWord = document.createElement('p');
+const btnReset = document.createElement('button');
+
+modal.className = 'modal';
+modalBox.className = 'modal-box';
+buttonModalClose.className = 'modal__x x-log';
+modalText.className = 'modal-text';
+modalText.textContent = `${result[1]}`;
+modalTextWord.className = 'modal-text word';
+modalTextWord.textContent = `Word: ${currentWord}`;
+btnReset.className = 'btn_reset';
+btnReset.textContent = 'Play again';
+document.body.prepend(modal);
+modal.prepend(modalBox);
+modalBox.prepend(btnReset);
+modalBox.prepend(buttonModalClose);
+modalBox.prepend(modalTextWord);
+modalBox.prepend(modalText);
+
+
+
+
+
+// const buttonModalClose = document.querySelector('.x-log');
+// const modal = document.querySelector('.modal');
 
 /*MAIN*/
 let main = document.createElement('main');
@@ -102,16 +141,16 @@ const initGame = (button, clickedKey) => {
     letter.textContent = startWord;
     word.appendChild(letter);
     button.disabled = true;
-    console.log(clickedKey, 'есть буква');
+    // console.log(clickedKey, 'есть буква');
   } else {
-    console.log(clickedKey, 'нет буквы');
+    // console.log(clickedKey, 'нет буквы');
     wrongKey += 1;
     arrImg[wrongKey - 1].classList.add('open');
   }
   button.disabled = true;
   CountErrorConteiner.innerHTML = 'Incorrect guesses: ' + `<span class = "count-errors">${wrongKey} / ${maxKey}</span>`;
   if (wrongKey === maxKey) {
-
+    modalOpen();
   }
 }
 
@@ -140,6 +179,19 @@ document.body.addEventListener('keydown', e => {
   }
 });
 
+
+
+const modalOpen = function() {
+  modal.classList.add("open");
+}
+
+const modalClose = function() {
+  modal.classList.remove("open");
+
+}
+
+buttonModalClose.addEventListener('click', modalClose);
+
 /*FOOTER*/
 let footer = document.createElement('footer');
 let year = document.createElement('p');
@@ -153,3 +205,4 @@ footer.appendChild(year);
 footer.appendChild(linkTRSS);
 footer.appendChild(linkGit);
 document.body.append(footer);
+

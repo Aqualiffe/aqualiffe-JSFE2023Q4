@@ -172,6 +172,60 @@ body {
   background-color: gray;
 }
 
+.modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: none;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.modal.open {
+  display: flex;
+}
+
+.modal__x {
+  background-image: url('./assets/close_btn.svg');
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.modal-box {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin: auto;
+  width: 250px;
+  height: 262px;
+  background: #fff;
+  padding: 20px 15px;
+  cursor: default;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+.modal-text {
+  font-size: 1.2em;
+  text-align: center;
+}
+.btn_reset {
+  width: 100px;
+  height: 50px;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin: 5px;
+  cursor: pointer;
+  text-align: center;
+}
 footer {
   flex-shrink: 0;
   display: flex;
