@@ -1,9 +1,13 @@
 let listQA = {
-  'cat': 'pet?',
+  'cat': 'Pet?',
   'everest': 'The highest mountain in the world?',
   'SpongeBob': 'whoooo who lives in a pineapple under the sea?',
   'Christmas tree': 'Who was born and grew up in the forest?',
   'Rolling Scopes School': 'School name',
+  'Hangman': 'Name of the game' ,
+  'HTML': 'The most basic building block of the Web',
+  'CSS': 'A stylesheet language used to describe the presentation of a document written in HTML or XML ',
+  'dog': 'Pet, peoples best friend',
 }
 
 const arrayOfImages = ['./assets/head.svg', './assets/body.svg', './assets/hand-one.svg', './assets/hand-two.svg', './assets/leg-one.svg', './assets/leg-two.svg',];
@@ -12,7 +16,7 @@ let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 let wrongKey = 0;
 const maxKey = 6;
-let result = ['You won', 'You lost']
+let result = ['You won', 'You lost'];
 
 
 function randomWord(obj) {
@@ -39,7 +43,6 @@ modal.className = 'modal';
 modalBox.className = 'modal-box';
 buttonModalClose.className = 'modal__x x-log';
 modalText.className = 'modal-text';
-modalText.textContent = `${result[1]}`;
 modalTextWord.className = 'modal-text word';
 modalTextWord.textContent = `Word: ${currentWord}`;
 btnReset.className = 'btn_reset';
@@ -54,67 +57,102 @@ modalBox.prepend(modalText);
 
 
 /*MAIN*/
-let main = document.createElement('main');
+const main = document.createElement('main');
 main.className = 'main';
 document.body.prepend(main);
 
-let mainTitle = document.createElement('h1');
+const mainTitle = document.createElement('h1');
 mainTitle.className = 'main__title';
 mainTitle.textContent = 'Hangman game';
 main.prepend(mainTitle);
 
-let conteiner = document.createElement('div');
+const conteiner = document.createElement('div');
 conteiner.className = 'conteiner';
 main.appendChild(conteiner);
 
-let gallows = document.createElement('div');
+const gallows = document.createElement('div');
 gallows.className = 'gallows';
 conteiner.appendChild(gallows);
-let allBody = document.createElement('div');
+const allBody = document.createElement('div');
 allBody.className = `gallows__allBody`;
 gallows.appendChild(allBody);
 
 
 for (let i = 0; i < 6; i += 1) {
-  let images = document.createElement('img');
+  const images = document.createElement('img');
   images.src = arrayOfImages[i];
   images.className = `allBody_img part-${i}`;
   allBody.appendChild(images);
 }
 
 
-let controls = document.createElement('div');
+const controls = document.createElement('div');
 controls.className = 'controls';
 conteiner.appendChild(controls);
 
-let hintConteiner = document.createElement('h2');
+const hintConteiner = document.createElement('h2');
 hintConteiner.className = 'hint';
-hintConteiner.textContent = 'Hint: ' + currentQuestion;
-controls.appendChild(hintConteiner);
 
-let word = document.createElement('div');
+
+const word = document.createElement('div');
 word.className = 'word';
 controls.appendChild(word);
 
-let letter = document.createElement('span');
+const letter = document.createElement('span');
 letter.className = 'letter';
-startWord ='';
+let startWord ='';
 
-for(let i = 0; i < currentWord.length; i += 1) {
-  if (currentWord[i] !== ' ') {
-    startWord += '_';
-  } else {
-    startWord += ' ';
+
+
+const CountErrorConteiner = document.createElement('h3');
+CountErrorConteiner.className = 'controls__error';
+
+const startTmp = function(currentWord) {
+  for(let i = 0; i < currentWord.length; i += 1) {
+    if (currentWord[i] !== ' ') {
+      startWord += '_';
+    } else {
+      startWord += ' ';
+    }
+  }
+}
+startTmp(currentWord);
+
+const resetGame = function() {
+  wrongKey = 0;
+  newCurrentWord = randomWord(listQA);
+  if (currentWord === newCurrentWord) {
+    newCurrentWord = randomWord(listQA);
+  }
+
+  currentQuestion = listQA[newCurrentWord];
+  newCurrentWord = newCurrentWord.toUpperCase();
+  hintConteiner.textContent = 'Hint: ' + currentQuestion;
+  startWord ='';
+  startTmp(newCurrentWord);
+  console.log(newCurrentWord);
+  currentWord = newCurrentWord;
+  letter.textContent = startWord;
+  word.appendChild(letter);
+  for (i = 0; i < keys.length; i += 1) {
+    if (keys[i].disabled){
+      console.log(keys[i]);
+      keys[i].disabled = false;
+    }
   }
 }
 
-letter.textContent = startWord;
-word.appendChild(letter);
 
-let CountErrorConteiner = document.createElement('h3');
-CountErrorConteiner.className = 'controls__error';
+
 CountErrorConteiner.innerHTML = 'Incorrect guesses: ' + `<span class = "count-errors">${wrongKey} / ${maxKey}</span>`;
 controls.appendChild(CountErrorConteiner);
+
+hintConteiner.textContent = 'Hint: ' + currentQuestion;
+controls.appendChild(hintConteiner);
+
+  letter.textContent = startWord;
+  word.appendChild(letter);
+
 
 
 const initGame = (button, clickedKey) => {
@@ -139,10 +177,14 @@ const initGame = (button, clickedKey) => {
   button.disabled = true;
   CountErrorConteiner.innerHTML = 'Incorrect guesses: ' + `<span class = "count-errors">${wrongKey} / ${maxKey}</span>`;
   if (wrongKey === maxKey) {
+    modalText.textContent = `${result[1]}`;
+    modalOpen();
+  }
+  if (startWord === currentWord) {
+    modalText.textContent = `${result[0]}`;
     modalOpen();
   }
 }
-
 
 let keyboard = document.createElement('div')
 keyboard.className = 'keyboard';
@@ -176,14 +218,17 @@ const modalOpen = function() {
 const modalClose = function(e) {
   const clickModal = e.composedPath().includes(modalBox);
   const clickBtnClose = e.composedPath().includes(buttonModalClose);
-  const clickBtnReset = e.composedPath().includes(btnReset);
-  if (!clickModal || clickBtnClose || clickBtnReset) {
+  if (!clickModal || clickBtnClose) {
     modal.classList.remove("open");
   }
 }
 
 buttonModalClose.addEventListener('click', modalClose);
-// document.addEventListener('click', modalClose);
+btnReset.addEventListener('click', function() {
+  modal.classList.remove("open");
+  resetGame();
+});
+
 /*FOOTER*/
 let footer = document.createElement('footer');
 let year = document.createElement('p');
@@ -198,16 +243,4 @@ footer.appendChild(linkTRSS);
 footer.appendChild(linkGit);
 document.body.append(footer);
 
-// const resetGame = function() {
-//   wrongKey = 0;
-//   currentWord = randomWord(listQA);
-//   currentQuestion = listQA[currentWord];
-//   currentWord = currentWord.toUpperCase();
-//   hintConteiner.textContent = 'Hint: ' + currentQuestion;
-//   letter.textContent = startWord;
-// }
 
-// btnReset.addEventListener('click', function() {
-//   resetGame();
-//   modalClose;
-// });
