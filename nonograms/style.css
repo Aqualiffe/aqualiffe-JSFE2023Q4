@@ -1,0 +1,11 @@
+body {
+    margin: 0 auto;
+}
+.game-conteiner {
+    display: flex;
+}
+#canvas {
+    border: 1px solid black;
+    margin: 0 auto;
+    background-color: #f4f4f4;
+}
