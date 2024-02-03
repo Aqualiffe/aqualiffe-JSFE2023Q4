@@ -102,6 +102,7 @@ const drowClear = function(fieldWidth, fieldHeight) {
   for (var y = numTop * 20; y <= fieldHeight; y += 20) {
     context.moveTo(0, y);
     context.lineTo(fieldHeight, y);
+    context.fillText("Hello world", 10, 50);
   }
   context.stroke();
   context.closePath();
@@ -120,6 +121,14 @@ const drowClear = function(fieldWidth, fieldHeight) {
   }
   context.stroke();
   context.closePath();
+
 }
 
 drowClear(fieldWidth, fieldHeight);
+
+console.log(leftNum);
+console.log(topNum);
+
+for(let i = 0; i < leftNum.length; i++){
+  console.log(leftNum[i].join(' '));
+}
